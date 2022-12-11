@@ -22,10 +22,18 @@ class App extends Component{
           mensagem:"Olá, tudo bem sim ....."
 
         }
-     ]
+     ],
+     novoComentario:{
+
+       nome:'',
+       email:'',
+       mensagem:''
+
+     }
   }
 
-   adicionarComentario = () =>{
+   adicionarComentario = evento =>{
+     evento.preventDefault();
 
 
      //A mecanica por tras do state e que ele é um array principal que esta recebendo um outro array 
@@ -34,12 +42,12 @@ class App extends Component{
      //dentro do array de ocmnetario como na sequencia abaixo  
 
      // colocando um novo comentario dentro do array 
-      const novoComentario = {
+     /* const novoComentario = {
         nome:"Pedro",
         email:"pedro@mail.com",
         data: new Date(2022,12,11),
         mensagem:"Olá, tudo bem sim ....."        
-      }
+      }*/
      
       // criando uma variavel pra receber o objeto novo
      //   let lista = this.state.comentarios;
@@ -52,13 +60,31 @@ class App extends Component{
     //refatorando pra usar o spread
     //no set state eu acesso o indice comentarios uso o spread pra puxar tudo
     // que tem dentro do state e adiciono o novo comentario direto no array 
-    
+
+    const novoComentario ={ ...this.state.novoComentario, data: new Date()}
     this.setState({
-      comentarios:[...this.state.comentarios,novoComentario]
-      }
-    )
+      comentarios:[...this.state.comentarios,novoComentario],
+      novoComentario:{nome:'',email:'', mensagem:''}
+    
+    })
 
    }
+
+   //eventos do tipo onchange são obrigatorios para rastrear as teclas digitadas nos inputs
+   //se não colocar o console reclama
+
+            digitacao = evento => {
+
+                const value = evento.target.value;
+                const name = evento.target.name;
+
+                this.setState({novoComentario:{ ...this.state.novoComentario, [name]:value }})  
+
+            }
+
+           
+
+          
 
    render(){
         return (
@@ -92,7 +118,41 @@ class App extends Component{
                 ))
               }
 
-              <button onClick={this.adicionarComentario}  >Adicionar Comentario</button>
+                <form method="post" onSubmit={this.adicionarComentario}>
+
+                    <h2>Adicionar Comentario</h2>
+                    <div>
+                      <input 
+                         type="text"
+                         name="nome"
+                         value={this.state.novoComentario.nome}
+                         onChange={this.digitacao}
+                         placeholder="Digite seu nome"
+                         />
+                    </div>
+
+                    <div>
+                      <input
+                         type="text"
+                         name="email"
+                         onChange={this.digitacao}
+                         value={this.state.novoComentario.email}
+                         placeholder="Digite seu email"
+                         />
+                    </div>
+                    
+                    <div>
+                      <textarea 
+                        name="mensagem"
+                        value={this.state.novoComentario.mensagem}
+                        onChange={this.digitacao}
+                        rows="4"
+                        ></textarea>
+                    </div>
+
+                    <button type="submit">Adicionar Comentario</button>
+
+                </form>
 
              
             
