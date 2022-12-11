@@ -25,7 +25,40 @@ class App extends Component{
      ]
   }
 
+   adicionarComentario = () =>{
 
+
+     //A mecanica por tras do state e que ele é um array principal que esta recebendo um outro array 
+     // entro do state eu criei um indice chamado Comentarios que tambem e um array então primeiro
+     //tenho que acessar o array state e depois apontar o indice para a função set state jogar o dado que eu quero 
+     //dentro do array de ocmnetario como na sequencia abaixo  
+
+     // colocando um novo comentario dentro do array 
+      const novoComentario = {
+        nome:"Pedro",
+        email:"pedro@mail.com",
+        data: new Date(2022,12,11),
+        mensagem:"Olá, tudo bem sim ....."        
+      }
+     
+      // criando uma variavel pra receber o objeto novo
+     //   let lista = this.state.comentarios;
+     // adicionando o novo objeto a o array principal 
+    // lista.push(novoComentario);
+    // colocando ele extamente no indice comentarios   
+    //  this.setState({comentarios: lista})
+
+
+    //refatorando pra usar o spread
+    //no set state eu acesso o indice comentarios uso o spread pra puxar tudo
+    // que tem dentro do state e adiciono o novo comentario direto no array 
+    
+    this.setState({
+      comentarios:[...this.state.comentarios,novoComentario]
+      }
+    )
+
+   }
 
    render(){
         return (
@@ -57,11 +90,9 @@ class App extends Component{
                   </Comentario>
                   
                 ))
-
-                
-
-
               }
+
+              <button onClick={this.adicionarComentario}  >Adicionar Comentario</button>
 
              
             
