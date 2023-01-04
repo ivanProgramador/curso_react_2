@@ -1,0 +1,28 @@
+O clico de vida de um componente e o caminho entre a sua criação em tempo de execução até 
+ser completamente desmontado.
+
+para que um compoente visual exista de fato ele precisa primeiro ser reconhecido pelo react 
+o codigo é lido interpretado depois esse compoente e montado com os seus atributos oque vai 
+ser renderizado ou alterado antes da exibição na tela.
+
+deposi que o react ja sabe que e um elemento, sabe quais são os atributos, e sabe oque tem que 
+mostrar o componente a adicionado ao virtual DOM criado peleo react pra depois ser adicionado ao 
+DOM real da pagina para aparecer na tela.
+
+o porcesso de desmontagem ocorre quando o compoente sai da tela ou ele é atualizado 
+eo cliclo começa outra vez.
+
+Componentes de função 
+- São componentes que são basicamnte um função js com retorno 
+
+Componentes de classe 
+- São Componetes que tem a sua estrutura baseada em uma classe 
+  nesse caso a classe precisa extender a classe Component do react 
+  e além disso usar o metodo render para poder retornar jsx ou qualquer tipo
+  de retorno na tela.
+
+
+
+
+
+
