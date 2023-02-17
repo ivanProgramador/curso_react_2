@@ -1,0 +1,91 @@
+
+Uma requisição basicamente possui 3 etapas
+
+1 - requisitar url 
+
+     fetch('https://reqres.in/api/users')
+
+
+2 - converter os valores no formato correto 
+
+      .then( resposta => resposta.json())
+ 
+    
+3 - pegar os dados ja convertidos e retornar 
+
+    .then(dados=>{
+                         const usuarios = dados.data.map(usuario=>({
+                          id: usuario.id,
+                          nome: usuario.first_name,
+                          sobrenome: usuario.last_name,
+                          email: usuario.email
+                       })
+       
+
+-----------------------
+
+
+essa é uma rewuisição do tipo get
+
+componentDidMount(){
+
+     fetch('https://reqres.in/api/users')
+                     .then( resposta => resposta.json())
+                     .then(dados=>{
+                         const usuarios = dados.data.map(usuario=>({
+                          id: usuario.id,
+                          nome: usuario.first_name,
+                          sobrenome: usuario.last_name,
+                          email: usuario.email
+                       }))
+
+                       console.log(usuarios)
+                       this.setState({usuarios:usuarios})
+
+                     })
+  }
+---------------------------------------------------------
+requisição do tipo post pra mandar dados pra api 
+
+fetch('https://reqres.in/api/users',{
+        method:'POST',
+        headers: {'content-type' : 'application/json'},
+        body: JSON.stringify(usuario)
+      })
+       .then(resposta => resposta.json())
+       .then(dados =>{
+        console.log(dados)
+        this.setState({ usuario: { nome: '', sobrenome: '', email: '' } })
+        this.props.adicionarUsuario(dados)
+       })
+
+--------------------------------------------------------------
+
+requisição do tipo delete 
+
+ removerUsuario(usuario) {
+    if (window.confirm(`Tem certeza que deseja remover "${usuario.nome} ${usuario.sobrenome}"?`)) {
+      
+      fetch(`https://reqres.in/api/user/${usuario.id}`,{
+        method:'DELETE',
+
+      }).then(resposta=>{
+        if(resposta.ok){
+        let usuarios = this.state.usuarios
+        usuarios = usuarios.filter(x => x.id !== usuario.id)
+        this.setState({ usuarios: usuarios })
+        }
+
+
+      })
+    }
+  }
+
+
+------------------------------------------------------------------------------
+
+
+
+
+
+
