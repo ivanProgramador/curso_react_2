@@ -14,10 +14,7 @@ function AdicionarUsuario(props){
 
 
 
-const  onChangeHandler = (event) => {
-    const { name, value } = event.target
-    this.setState({ usuario: { ...this.state.usuario, [name]: value } })
-  }
+
 
  const onSubmitHandler = (event) =>{
     event.preventDefault()
@@ -30,19 +27,29 @@ const  onChangeHandler = (event) => {
         headers: {'content-type' : 'application/json'},
         body: JSON.stringify(usuario)
       })
-       .then(resposta => resposta.json())
-       .then(dados =>{
-                
-         setNome('')
-         setSobrenome('')
-         setEmail('')
-         props.AdicionarUsuario(dados)
-       })
+       .then(resposta => {
+           
+           if(resposta.ok){
+
+            setNome('')
+            setSobrenome('')
+            setEmail('')
+            alert('usuario Cadastrado com sucesso')
+              
+           }
+       }
+  )
+  
 
    
 
 
 
+  }
+
+  const  onChangeHandler = (event) => {
+    const { name, value } = event.target
+    this.setState({ usuario: { ...this.state.usuario, [name]: value } })
   }
 
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import AdicionarUsuario from '../AdicionarUsuario/AdicionarUsuario'
+
 import Usuario from '../Usuario/Usuario'
 
  function Usuarios() {
@@ -28,13 +28,7 @@ import Usuario from '../Usuario/Usuario'
 
     },[])
 
-    const adicionarUsuario = usuario => {
-   //  const usuarios = [...this.state.usuarios, usuario]
-   // this.setState({ usuarios: usuarios })
-
-   setUsuarios(usuariosAtuais=>[...usuariosAtuais,usuario])
-
-   }
+   
 
 
     const removerUsuario = usuario => {
@@ -64,7 +58,7 @@ import Usuario from '../Usuario/Usuario'
   
     return (
       <>
-        <AdicionarUsuario adicionarUsuario={adicionarUsuario} />
+       
 
         {usuarios.map(usuario => (
           <Usuario key={usuario.id}

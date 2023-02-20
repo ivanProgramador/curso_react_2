@@ -1,0 +1,45 @@
+Quando a rotas esta em sequencia em refrencia a home o sistema cha que toddas as rotas seguintes pertencem a ela  
+
+/
+/usuarios 
+/adicionar usuarios
+
+para que isso não aconteça o parametro exact é usado.
+se não usar vai dar porbelma no roteamento
+
+ <nav>
+                <ul>
+                  <li>
+                    <NavLink to="/" exact>Inicio</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/usuarios">Usuários Cadastrados</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/adicionar">Adicionar Usuário</NavLink>
+                  </li>
+                </ul>
+              </nav>
+
+------------------------------------------------------------------
+ <Switch>
+              
+              <Route path="/" exact>
+                        <Home/>
+                  </Route>
+
+                  <Route path="/usuarios">
+                        <Usuarios />
+                  </Route>
+
+                  <Route path="/adicionar">
+                        <AdicionarUsuario/>
+                  </Route>
+
+                  <Route path="*">
+                        <PaginaNaoEncontrada/>
+                  </Route>
+
+                 
+
+              </Switch>
