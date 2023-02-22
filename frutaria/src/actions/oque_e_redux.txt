@@ -1,0 +1,2 @@
+Basicamente o metodo redux se comporta como um controller que centraliza das funções de todos os componetes da aplicação
+ele tem um objeto princupal chamado actions que basicamente funciona como um vetor de funções
