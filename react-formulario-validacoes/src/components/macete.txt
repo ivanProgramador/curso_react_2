@@ -1,0 +1,6 @@
+Poque fazer a nossa propria validação ?
+
+- Cada navegador tem a sua forma de lidar com dados de formulario 
+- o problema de usar a validação do navegador e que ela pode não funcionar
+- quando for executada em um navegador espcifico, compormetendo a segurança da aplicação  
+
